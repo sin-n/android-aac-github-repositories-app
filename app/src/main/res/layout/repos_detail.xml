@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <variable name="viewModel" type="s.sin.githubrepositories.ui.ReposDetailViewModel"/>
+        <variable name="eventListener" type="android.view.View.OnClickListener"/>
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+            android:fitsSystemWindows="true"
+            android:background="@color/white"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+        <androidx.appcompat.widget.Toolbar
+                android:id="@+id/toolbar"
+                android:fitsSystemWindows="true"
+                app:titleTextColor="@color/white"
+                app:layout_constraintTop_toTopOf="parent"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                android:background="?attr/colorPrimary"
+                android:elevation="4dp"
+                android:theme="@style/ThemeOverlay.AppCompat.ActionBar"
+                app:popupTheme="@style/ThemeOverlay.AppCompat.Light">
+
+            <ImageButton
+                    android:id="@+id/searchImageView"
+                    android:src="@drawable/ic_baseline_keyboard_arrow_left_24dp"
+                    android:layout_marginRight="8dp"
+                    android:background="@null"
+                    android:onClick="@{eventListener::onClick}"
+                    android:layout_width="32dp"
+                    android:layout_height="32dp"/>
+
+            <TextView
+                    android:id="@+id/toolbarTextView"
+                    android:text="@{viewModel.title}"
+                    android:textSize="18dp"
+                    android:gravity="center_vertical"
+                    android:textStyle="bold"
+                    android:textColor="@color/white"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"/>
+
+        </androidx.appcompat.widget.Toolbar>
+
+        <CheckBox
+                android:id="@+id/checkbox"
+                app:layout_constraintTop_toBottomOf="@id/toolbar"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                android:text="star"
+                android:checked="@={viewModel.star}"
+                android:layout_margin="8dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+        <!-- Owner -->
+        <TextView
+                android:id="@+id/ownerTextView"
+                android:text="Owner"
+                android:layout_margin="8dp"
+                app:layout_constraintTop_toBottomOf="@id/checkbox"
+                app:layout_constraintLeft_toLeftOf="parent"
+                android:textSize="@dimen/gr_text_size20"
+                android:textStyle="bold"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+        <ImageView
+                android:id="@+id/imageView"
+                android:layout_margin="8dp"
+                app:url="@{viewModel.avatarUrl}"
+                app:layout_constraintTop_toBottomOf="@id/ownerTextView"
+                app:layout_constraintLeft_toLeftOf="parent"
+                android:layout_width="60dp"
+                android:layout_height="60dp"/>
+
+        <TextView
+                android:id="@+id/nameTextView"
+                android:text="@{viewModel.name}"
+                android:layout_margin="8dp"
+                app:layout_constraintTop_toTopOf="@id/imageView"
+                app:layout_constraintBottom_toBottomOf="@id/imageView"
+                app:layout_constraintLeft_toRightOf="@id/imageView"
+                android:textSize="@dimen/gr_text_size16"
+                android:textStyle="normal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+        <!-- Repository -->
+        <TextView
+                android:id="@+id/reposTextView"
+                android:text="Repository URL"
+                android:layout_margin="8dp"
+                app:layout_constraintTop_toBottomOf="@id/imageView"
+                app:layout_constraintLeft_toLeftOf="parent"
+                android:textSize="@dimen/gr_text_size20"
+                android:textStyle="bold"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+        <TextView
+                android:id="@+id/reposUrlTextView"
+                android:text="@{viewModel.url}"
+                app:layout_constraintTop_toBottomOf="@id/reposTextView"
+                android:layout_margin="8dp"
+                app:layout_constraintLeft_toLeftOf="parent"
+                android:textSize="@dimen/gr_text_size16"
+                android:textStyle="normal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+        <!-- License -->
+        <TextView
+                android:id="@+id/licenseTextView"
+                android:text="License"
+                android:layout_margin="8dp"
+                app:layout_constraintTop_toBottomOf="@id/reposUrlTextView"
+                app:layout_constraintLeft_toLeftOf="parent"
+                android:textSize="@dimen/gr_text_size20"
+                android:textStyle="bold"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+        <TextView
+                android:id="@+id/licenseNameTextView"
+                android:text="@{viewModel.licenseName}"
+                android:layout_margin="8dp"
+                app:layout_constraintTop_toBottomOf="@id/licenseTextView"
+                app:layout_constraintLeft_toLeftOf="parent"
+                android:textSize="@dimen/gr_text_size16"
+                android:textStyle="normal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+        <TextView
+                android:id="@+id/licenseUrlTextView"
+                android:text="@{viewModel.licenseUrl}"
+                android:layout_margin="8dp"
+                app:layout_constraintTop_toBottomOf="@id/licenseNameTextView"
+                app:layout_constraintLeft_toLeftOf="parent"
+                android:textSize="@dimen/gr_text_size16"
+                android:textStyle="normal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

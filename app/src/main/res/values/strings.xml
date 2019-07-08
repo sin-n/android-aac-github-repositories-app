@@ -1,6 +1,7 @@
 <resources>
     <string name="app_name">GithubRepositories</string>
-    <string name="title_home">Home</string>
-    <string name="title_dashboard">Dashboard</string>
-    <string name="title_notifications">Notifications</string>
+    <string name="title_top">Top</string>
+    <string name="title_star">Star</string>
+
+    <string name="search_hint">repository名で検索</string>
 </resources>
